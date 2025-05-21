@@ -1,41 +1,51 @@
-import pandas as pd
+from transformers import AutoTokenizer
 from langchain_ollama import OllamaLLM
 from langchain.prompts import PromptTemplate
-from modules.rag_dictionary import consultar_exemplos_similares
+from langchain.callbacks.tracers import LangChainTracer
 
+tracer = LangChainTracer()
 llm = OllamaLLM(model="mistral:7b", temperature=0.2)
-
-df_dicionario = pd.read_csv("data/dicionario_uso_contas.csv", delimiter=";", encoding="utf-8")
+tokenizer = AutoTokenizer.from_pretrained("hf-internal-testing/llama-tokenizer")
 
 prompt = PromptTemplate(
-  input_variables=["input_usuario", "resposta_fallback", "historico_uso"],
+  input_variables=["input_usuario", "candidatos", "textos_base"],
   template="""
-  Você é analista contábil.  
-  Sua missão:
+  Você é um assistente contábil. Sua tarefa é avaliar cinco sugestões de contas gerenciais retornadas por um classificador supervisionado e compará-las com três exemplos reais da base contábil institucional (texto_base).
 
-  1. Verifique **se a conta sugerida** pelo classificador é a melhor opção.
-  2. Se concordar, responda:  OK  - <Conta Gerencial>  - <1-linha de justificativa>.
-  3. Se existir outra conta **mais apropriada**, responda: CORRIGIR  - <Conta Melhor>  - <1-linha de justificativa>.
+  Solicitação do usuário: {input_usuario}
 
-  Pergunta: "{input_usuario}"  
-  Conta sugerida: "{resposta_fallback}"  
-  Exemplos semelhantes encontrados: "{historico_uso}"
+  Sugestões com pontuação:
+  {candidatos}
+
+  Exemplos da base real:
+  {textos_base}
+
+  Com base nas sugestões e exemplos reais, indique a conta mais apropriada. Seja direto e justifique com base textual clara.
   """
 )
 
 chain = prompt | llm
 
-def consulta_llm_langchain(input_usuario, historico_uso, resposta_fallback):
-  # Ignora candidatos_df (por ora não usado neste modo)
-  exemplos_semelhantes = consultar_exemplos_similares(input_usuario, resposta_fallback, k=5)
+def consulta_llm_langchain(input_usuario, contas_top5, scores_top5, textos_base):
+    candidatos_str = "\n".join([
+        f"- {conta} (probabilidade: {round(score*100, 2)}%)"
+        for conta, score in zip(contas_top5, scores_top5)
+    ])
 
-  if not exemplos_semelhantes:
-    historico_uso = "Sem histórico encontrado."
-  else:
-    historico_uso = "\n".join(f"- {x}" for x in exemplos_semelhantes)
+    textos_str = "\n".join(f"- {t}" for t in textos_base)
 
-  return chain.invoke({
-    "input_usuario": input_usuario,
-    "resposta_fallback": resposta_fallback,
-    "historico_uso": historico_uso
-  })
+    full_prompt = prompt.format(
+        input_usuario=input_usuario,
+        candidatos=candidatos_str,
+        textos_base=textos_str
+    )
+
+    token_count = len(tokenizer.encode(full_prompt))
+
+    resposta = chain.invoke({
+        "input_usuario": input_usuario,
+        "candidatos": candidatos_str,
+        "textos_base": textos_str
+    }, config={"callbacks": [tracer]})
+
+    return resposta.strip(), token_count
