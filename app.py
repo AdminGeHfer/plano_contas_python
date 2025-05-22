@@ -7,7 +7,7 @@ from modules.faiss_handler import carregar_index_faiss, recuperar_similares
 
 load_dotenv()
 
-st.set_page_config(page_title="Assistente Plano de Contas", layout="centered")
+st.set_page_config(page_title="Assistente Plano de Contas", layout="centered", page_icon="🧾")
 st.title("Assistente de Contas Gerenciais")
 st.caption("Classificador supervisionado + FAISS + LLM")
 
