@@ -1,4 +1,3 @@
-# fallback_classifier_embed.py
 import numpy as np
 import pandas as pd
 import joblib

@@ -5,7 +5,6 @@ from joblib import dump, load
 from sklearn.metrics import accuracy_score, top_k_accuracy_score
 from modules.utils import normalizar_texto
 from joblib import load
-from sklearn.pipeline import Pipeline
 
 # -------------------- Configurações fixas
 CSV_PATH = "data/base_treinamento_fallback.csv"
