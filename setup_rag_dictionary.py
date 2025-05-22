@@ -1,3 +1,4 @@
+import ast
 import pandas as pd
 import numpy as np
 import faiss
@@ -16,7 +17,7 @@ expanded_rows = []
 for _, row in df_dicionario.iterrows():
     conta = row["Conta Gerencial"]
     try:
-        exemplos = eval(row["Exemplos de Uso"]) if isinstance(row["Exemplos de Uso"], str) else row["Exemplos de Uso"]
+        exemplos = ast.literal_eval(row["Exemplos de Uso"]) if isinstance(row["Exemplos de Uso"], str) else row["Exemplos de Uso"]
         for exemplo in exemplos:
             expanded_rows.append({"Conta Gerencial": conta, "Exemplo de Uso": exemplo})
     except Exception as e:

@@ -26,6 +26,6 @@ def consultar_exemplos_similares(texto_usuario, conta_sugerida, k=5, busca_globa
   #      caso contrário devolve os melhores k globais para que o LLM decida.
   subset = candidatos[candidatos["Conta Gerencial"] == conta_sugerida]
   if not subset.empty:
-    return subset.nlargest(k, "dist")["Exemplo de Uso"].tolist()
+    return subset.nsmallest(k, "dist")["Exemplo de Uso"].tolist()
 
-  return candidatos.nlargest(k, "dist")["Exemplo de Uso"].tolist()
+  return candidatos.nsmallest(k, "dist")["Exemplo de Uso"].tolist()
