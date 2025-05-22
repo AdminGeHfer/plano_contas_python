@@ -47,7 +47,7 @@ if consulta:
 
     # 4. Exibir veredicto primeiro
     st.divider()
-    st.subheader("🧠 Veredicto do LLM")
+    st.subheader("🧠 Veredito do LLM")
     st.markdown(resposta_llm)
 
     # 5. Expanders com demais blocos

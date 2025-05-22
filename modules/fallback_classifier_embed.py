@@ -29,7 +29,11 @@ pesos_dict = dict(zip(classes, pesos))
 
 # 🔧 Pipeline com embeddings
 modelo = Pipeline([
-    ("normalize", FunctionTransformer(normalizar_texto, validate=False)),
+    ("normalize", FunctionTransformer(
+      func=normalizar_texto,
+      kw_args={"expandir_sinonimos": True, "topn": 3, "limiar": 0.75},
+      validate=False
+    )),
     ("embed", FunctionTransformer(gerar_embeddings, validate=False)),
     ("clf", LogisticRegression(max_iter=2000, class_weight=pesos_dict))
 ])
