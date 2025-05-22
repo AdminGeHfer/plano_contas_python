@@ -3,3 +3,5 @@
 # Logs do Streamlit
 logs/
 nohup.out
+# Pasta python virtual
+.venv/
