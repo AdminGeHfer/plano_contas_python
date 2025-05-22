@@ -23,11 +23,12 @@ python start.py
 
 ### Ferramentas e configurações
 O projeto atualmente utiliza as seguintes bibliotecas e ferramentas:
-- Python (3.10.14)
+- Python (versão atual: 3.10.14)
 - Modelo de LLM: [`mistral:7b`](https://ollama.com/library/mistral:7b) com temperatura 0.2 via Ollama
 - Modelo de tokenização do LLM: [`hf-internal-testing/llama-tokenizer`](https://huggingface.co/hf-internal-testing/llama-tokenizer)
 - Modelo de PLN (Baixado via spaCy): [`pt_core_news_lg`](https://spacy.io/models/pt)
 - Modelo de Deep Learning (significado semântico de sentenças): [`paraphrase-multilingual-MiniLM-L12-v2`](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2)
+
 - Bibliotecas utilizadas:
   - Nativas:
     - [OS](https://docs.python.org/3/library/os.html)
@@ -52,4 +53,23 @@ O projeto atualmente utiliza as seguintes bibliotecas e ferramentas:
   - [LangchainOllama](https://python.langchain.com/docs/integrations/chat/ollama)
   - [Langchain](https://www.langchain.com)
   - [Streamlit](https://streamlit.io)
+
 - Ferramenta para visualização das informações: [Streamlit](https://streamlit.io)
+- Uso do Ollama localmente (e baixar o modelo usado):
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+ollama pull mistral:7b
+```
+- Instalação do modelo de PLN via spacy (Python):
+```python
+python -m spacy download pt_core_news_lg
+```
+- [PyEnv](https://github.com/pyenv/pyenv) para gerenciar a versão do Python.
+- Instalação com pyenv:
+```bash
+pyenv install 3.10.14
+pyenv local 3.10.14
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
