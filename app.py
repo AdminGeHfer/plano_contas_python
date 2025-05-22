@@ -14,7 +14,7 @@ st.caption("Classificador supervisionado + FAISS + LLM")
 index_faiss, df_faiss, _ = carregar_index_faiss()
 modelo_fallback = load("models/classificador_fallback_embed.joblib")
 
-consulta = st.text_input("Escreva a situação como na descrição da entrada de NF (ex.: 'CANETA ESFER BIC CRISTAL AVULSO'):")
+consulta = st.text_input("Escreva o nome do produto como é exibido na descrição da Nota Fiscal (ex.: 'CANETA ESFER BIC CRISTAL AVULSO'):")
 
 if consulta:
   # 1. Predição supervisionada
