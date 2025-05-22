@@ -1,2 +1,5 @@
 # Arquivos de configuração privados
 .env
+# Logs do Streamlit
+logs/
+nohup.out
