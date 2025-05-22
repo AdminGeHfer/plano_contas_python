@@ -45,7 +45,7 @@ O projeto atualmente utiliza as seguintes bibliotecas e ferramentas:
   - [Joblib](https://joblib.readthedocs.io/en/stable)
   - [Dotenv](https://github.com/theskumar/python-dotenv)
   - [Scikit-Learn](https://scikit-learn.org/stable)
-  - [Spacy](https://scikit-learn.org/stable)
+  - [Spacy](https://spacy.io)
   - [Unidecode](https://github.com/avian2/unidecode)
   - [Tqdm](https://tqdm.github.io)
   - [Transformers](https://github.com/huggingface/transformers)
