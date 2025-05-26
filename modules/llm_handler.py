@@ -36,7 +36,7 @@ prompt = PromptTemplate(
 
   Caso nenhuma delas seja adequada (pode até considerar a probabilidade como parâmetro), leve em consideração os exemplos da base real.
 
-  Seja direto e justifique com base textual clara.
+  Seja direto e justifique com base textual clara. Destaque a conta escolhida em negrito.
   """
 )
 

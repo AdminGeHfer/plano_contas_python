@@ -3,5 +3,6 @@
 # Logs do Streamlit
 logs/
 nohup.out
-# Pasta python virtual
+# Pasta python virtual e gradio
 .venv/
+.gradio/

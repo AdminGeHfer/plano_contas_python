@@ -52,9 +52,9 @@ O projeto atualmente utiliza as seguintes bibliotecas e ferramentas:
   - [Transformers](https://github.com/huggingface/transformers)
   - [LangchainOllama](https://python.langchain.com/docs/integrations/chat/ollama)
   - [Langchain](https://www.langchain.com)
-  - [Streamlit](https://streamlit.io)
+  - [Gradio](https://www.gradio.app)
 
-- Ferramenta para visualização das informações: [Streamlit](https://streamlit.io)
+- Ferramenta para visualização das informações: [Gradio](https://www.gradio.app)
 - Uso do Ollama localmente (e baixar o modelo usado):
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh

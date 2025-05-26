@@ -1,29 +1,29 @@
-import streamlit as st
+import gradio as gr
 from joblib import load
 
-st.set_page_config(page_title="Logs do Sistema", layout="centered", page_icon="📜")
-st.title("📜 Logs e Verificações")
+def carregar_logs():
+  try:
+    with open("logs/atualizacoes.log", "r") as f:
+      return f.read()
+  except FileNotFoundError:
+    return "⚠️ Log de atualizações ainda não foi gerado."
 
-# Exibição do log de atualizações
-st.subheader("📅 Histórico de atualizações")
-try:
-  with open("logs/atualizacoes.log", "r") as f:
-    conteudo = f.read()
-    st.text_area("Log de Atualizações", value=conteudo, height=300)
-except FileNotFoundError:
-  st.warning("Log de atualizações ainda não foi gerado.")
+def checar_modelo():
+  try:
+    modelo = load("models/classificador_fallback_embed.joblib")
+    if hasattr(modelo, 'steps'):
+      steps = "\n".join([f"- {nome}: {type(etapa).__name__}" for nome, etapa in modelo.steps])
+      return f"✅ Modelo carregado com sucesso.\n\n### Pipeline:\n{steps}"
+    else:
+      return "⚠️ O modelo carregado não é um pipeline sklearn."
+  except Exception as e:
+    return f"❌ Erro ao carregar o modelo: {e}"
 
-# Validação do modelo carregado
-st.subheader("🔍 Diagnóstico do modelo supervisionado")
-try:
-  modelo = load("models/classificador_fallback_embed.joblib")
-  st.success("✅ Modelo carregado com sucesso.")
+def interface_logs():
+  gr.Markdown("## 📜 Logs do Sistema")
 
-  if hasattr(modelo, 'steps'):
-    st.markdown("### Pipeline carregado:")
-    for nome, etapa in modelo.steps:
-      st.write(f"- **{nome}**: `{type(etapa).__name__}`")
-  else:
-    st.warning("O modelo carregado não é um pipeline sklearn. Verifique se está correto.")
-except Exception as e:
-  st.error(f"❌ Erro ao carregar o modelo: {e}")
+  with gr.Row():
+    gr.Textbox(value=carregar_logs(), lines=15, label="📅 Histórico de atualizações")
+
+  with gr.Row():
+    gr.Textbox(value=checar_modelo(), lines=10, label="🔍 Diagnóstico do modelo")
