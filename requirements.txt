@@ -2,6 +2,7 @@ faiss_cpu>=1.11.0
 joblib>=1.5.0
 langchain>=0.3.25
 langchain_ollama>=0.3.3
+langchain_openai>=0.3.18
 numpy>=2.2.6
 pandas>=2.2.3
 python-dotenv>=1.1.0

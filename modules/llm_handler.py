@@ -1,5 +1,6 @@
+import os
 from transformers import AutoTokenizer
-from langchain_ollama import OllamaLLM
+from langchain_openai import ChatOpenAI # from langchain_ollama import OllamaLLM (for ollama models)
 from langchain.prompts import PromptTemplate
 from langchain.callbacks.tracers import LangChainTracer
 from unidecode import unidecode
@@ -7,7 +8,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 tracer = LangChainTracer()
-llm = OllamaLLM(model="mistral:7b", temperature=0.2)
+llm = ChatOpenAI(
+  model=os.getenv("OPENAI_MODEL", "gpt-3.5-turbo-0125"),
+  openai_api_key=os.getenv("OPENAI_API_KEY"),
+  openai_api_base=os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1"),
+  temperature=0.2,
+  max_tokens=600,
+) # llm = OllamaLLM(model="mistral:7b", temperature=0.2) # for ollama models
 tokenizer = AutoTokenizer.from_pretrained("hf-internal-testing/llama-tokenizer", legacy=False)
 
 prompt = PromptTemplate(
@@ -55,6 +62,6 @@ def consulta_llm_langchain(input_usuario, contas_top5, scores_top5, textos_base)
         "input_usuario": input_usuario,
         "candidatos": candidatos_str,
         "textos_base": textos_str
-    }, config={"callbacks": [tracer]})
+    }) # , config={"callbacks": [tracer]})
 
-    return resposta.strip(), token_count
+    return resposta, token_count # .strip()
