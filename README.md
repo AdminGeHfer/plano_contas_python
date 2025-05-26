@@ -24,7 +24,8 @@ python start.py
 ### Ferramentas e configurações
 O projeto atualmente utiliza as seguintes bibliotecas e ferramentas:
 - Python (versão atual: 3.10.14)
-- Modelo de LLM: [`mistral:7b`](https://ollama.com/library/mistral:7b) com temperatura 0.2 via Ollama
+- Modelo de LLM: [`mistral:7b`](https://ollama.com/library/mistral:7b) com temperatura 0.2 via Ollama (se for usado localmente)
+- Modelo de LLM (GPT): [gpt-3.5-turbo](https://platform.openai.com/docs/models/gpt-3.5-turbo)
 - Modelo de tokenização do LLM: [`hf-internal-testing/llama-tokenizer`](https://huggingface.co/hf-internal-testing/llama-tokenizer)
 - Modelo de PLN (Baixado via spaCy): [`pt_core_news_lg`](https://spacy.io/models/pt)
 - Modelo de Deep Learning (significado semântico de sentenças): [`paraphrase-multilingual-MiniLM-L12-v2`](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2)
