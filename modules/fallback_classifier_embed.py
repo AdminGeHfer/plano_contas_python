@@ -31,9 +31,9 @@ modelo = Pipeline([
     ("normalize", FunctionTransformer(
       func=normalizar_texto,
       kw_args={"expandir_sinonimos": True, "topn": 3, "limiar": 0.75},
-      validate=False
+      validate=True
     )),
-    ("embed", FunctionTransformer(gerar_embeddings, validate=False)),
+    ("embed", FunctionTransformer(gerar_embeddings, validate=True)),
     ("clf", LogisticRegression(max_iter=2000, class_weight=pesos_dict))
 ])
 

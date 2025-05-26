@@ -3,7 +3,9 @@ from langchain_ollama import OllamaLLM
 from langchain.prompts import PromptTemplate
 from langchain.callbacks.tracers import LangChainTracer
 from unidecode import unidecode
+from dotenv import load_dotenv
 
+load_dotenv()
 tracer = LangChainTracer()
 llm = OllamaLLM(model="mistral:7b", temperature=0.2)
 tokenizer = AutoTokenizer.from_pretrained("hf-internal-testing/llama-tokenizer", legacy=False)
