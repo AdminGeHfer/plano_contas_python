@@ -12,7 +12,7 @@ O intuito deste projeto é construir um modelo de LLM local no qual realiza a an
 ## Ajustes e melhorias
 Conforme as necessidades de demandas e melhorias necessárias do assistente, é necessário levar em conta as seguintes considerações:
 
-- Caso haja alguma atualização na base de dados histórica, no caso o `base_treinamento_fallback.csv`, será necessário refazer o treinamento da avaliação do PLN do modelo supervisionado (com e sem sinônimos), por meio da aba `avaliacao` do Streamlit.
+- Caso haja alguma atualização na base de dados histórica, no caso o `base_treinamento_fallback.csv`, será necessário refazer o treinamento da avaliação do PLN do modelo supervisionado (com e sem sinônimos), por meio da aba `avaliacao` do Gradio.
   - Lembrando que por questão de otimização de tempo, do modelo supervisionado com sinônimos leva mais tempo que o sem sinônimos (com ≈ 4h; sem ≈ 5min).
 
 - Caso ocorra alteração no `dataset_plano_de_contas.csv` ou no `dicionario_uso_contas.csv`, é necessário re-executar o setup do RAG junto com o FAISS, no qual para isso basta executar no terminal:
