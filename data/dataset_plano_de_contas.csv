@@ -128,7 +128,18 @@
 29;OT IPI a Recolher;B;OBRIGAÇÕES TRIBUTÁRIAS
 290;NG BP Diretoria Comissão e IPI;B;NÃO GERENCIAL
 291;NG Pagamento Nova Steel;B;NÃO GERENCIAL
+292;NG Frete de Materia Prima;B;NÃO GERENCIAL
+293;NG Comissoes de Compra;B;NÃO GERENCIAL
+294;NG Despesas Logisticas;B;NÃO GERENCIAL
+295;NG Despesas Administrativas;B;NÃO GERENCIAL
+296;NG Despesas com Pessoal;B;NÃO GERENCIAL
+297;NG Despesas Comerciais;B;NÃO GERENCIAL
+298;NG Despesas Financeiras;B;NÃO GERENCIAL
+299;NG Despesas Operacionais;B;NÃO GERENCIAL
 30;OT IRRF a Recolher;B;OBRIGAÇÕES TRIBUTÁRIAS
+300;NG Investimentos;B;NÃO GERENCIAL
+301;NG Obrigaçoes Tributarias;B;NÃO GERENCIAL
+302;NG Pgto Fornecedor G1;B;NÃO GERENCIAL
 31;OT PIS a Recolher;B;OBRIGAÇÕES TRIBUTÁRIAS
 32;OT IRPJ;B;OBRIGAÇÕES TRIBUTÁRIAS
 33;OT ISS;B;OBRIGAÇÕES TRIBUTÁRIAS
@@ -335,6 +346,8 @@
 387;DF Serviços de Cobrança MG;P;DESPESAS FINANCEIRAS
 389;NG BP Diretoria Comissão e IPI;P;NÃO GERENCIAL
 390;NG Mercadoria Revenda BP;P;NÃO GERENCIAL
+391;NG Frete de Materia Prima;P;NÃO GERENCIAL
+392;NG Mercadoria Revenda Caldeja;P;NÃO GERENCIAL
 40;CSP Mercadoria Revenda;P;CUSTOS SOBRE PRODUÇÃO-PRODUTO
 46;CSP Serviço Terceiro;P;CUSTO DE PROJETOS
 49;DA Contabilidade;P;DESPESAS ADMINISTRATIVAS

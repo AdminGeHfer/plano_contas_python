@@ -29,7 +29,6 @@ O projeto atualmente utiliza as seguintes bibliotecas e ferramentas:
 - Modelo de tokenização do LLM: [`hf-internal-testing/llama-tokenizer`](https://huggingface.co/hf-internal-testing/llama-tokenizer)
 - Modelo de PLN (Baixado via spaCy): [`pt_core_news_lg`](https://spacy.io/models/pt)
 - Modelo de Deep Learning (significado semântico de sentenças): [`paraphrase-multilingual-MiniLM-L12-v2`](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2)
-
 - Bibliotecas utilizadas:
   - Nativas:
     - [OS](https://docs.python.org/3/library/os.html)
