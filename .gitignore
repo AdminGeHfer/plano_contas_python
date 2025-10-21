@@ -1,8 +1,7 @@
 # Arquivos de configuração privados
 .env
-# Logs do Streamlit
-logs/
-nohup.out
 # Pasta python virtual e gradio
 .venv/
 .gradio/
+# Logs
+logs/
