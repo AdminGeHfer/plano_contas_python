@@ -73,3 +73,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+- Subir o Gradio:
+```bash
+nohup python app.py
+```

@@ -10,11 +10,11 @@ def main():
   print("🔄 Treinando classificador supervisionado…")
 
   df = pd.read_csv(CSV_FILE, delimiter=";", encoding="utf-8")
-  entradas = df["Descrição do Produto"]
-  rotulos = df["Conta Gerencial"]
+  entradas = df["DESCRI"]
+  rotulos = df["DESC_PLA"]
 
   modelo = treinar_classificador(entradas, rotulos)
-  modelo.fit(entradas, rotulos)   # ← 👈 ESSENCIAL
+  modelo.fit(entradas, rotulos)
 
   joblib.dump(modelo, MODEL_FILE, compress=3)
   print("✅ Modelo salvo em", MODEL_FILE)

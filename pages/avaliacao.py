@@ -16,7 +16,7 @@ def avaliar_modelo(modo):
 
   modelo = load(MODEL_PATH)
   df = pd.read_csv(CSV_PATH, delimiter=";", encoding="utf-8")
-  X_raw = df["Descrição do Produto"].astype(str).tolist()
+  X_raw = df["DESCRI"].astype(str).tolist()
   y_true = df["Conta Gerencial"].astype(str).tolist()
 
   y_preds = []

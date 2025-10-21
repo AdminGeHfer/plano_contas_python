@@ -18,8 +18,8 @@ modelo_st = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 # 🔄 Carregamento dos dados
 print("🔄 Carregando base de treinamento…")
 df = pd.read_csv(CSV_FILE, delimiter=";", encoding="utf-8", dtype=str)
-entradas = df["Descrição do Produto"]
-rotulos = df["Conta Gerencial"]
+entradas = df["DESCRI"]
+rotulos = df["DESC_PLA"]
 
 # ⚖️ Rebalanceamento por classe
 classes = np.unique(rotulos)
